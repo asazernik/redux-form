@@ -82,10 +82,12 @@ const readField = (state, fieldName, pathToHere = '', fields, syncErrors, asyncV
 
       const result = readField(fieldState, rest, nextPath, dest, syncErrors,
         asyncValidate, isReactNative, props, callback, nextPrefix);
-      if (!rest && fieldArray[index] !== result) {
-        // if nothing after [] in field name, assign directly to array
-        fieldArray[index] = result;
+      if (fieldArray[index] !== result) {
         changed = true;
+
+        if (!rest) { // if nothing after [] in field name, assign directly to array
+          fieldArray[index] = result;
+        }
       }
     });
     if (fieldArray.length > stateArray.length) {
