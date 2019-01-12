@@ -75,8 +75,7 @@ import type {
   Untouch
 } from './actions.types'
 
-import { type Event as _Event } from './types'
-export type Event = _Event
+export type { Event } from './types'
 
 type StructureMap = Object
 
